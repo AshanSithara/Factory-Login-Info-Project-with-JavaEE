@@ -1,0 +1,155 @@
+<script type="text/javascript">
+    $('.clockpicker').clockpicker({
+        placement: 'top',
+        align: 'right',
+        autoclose: true,
+        'default': 'now'
+    });
+</script>
+
+<h1><span class="col-md-12 mt-5 badge badge-secondary companyCss">Giriş İzni Oluşturma</span></h1>
+<hr/>
+<form id="submitLoginPermissionForm">
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="girisYapacakKisiler" class="col-sm-2 col-form-label">Giriş Yapacak Kişiler:</label>
+        <div class="col-sm-6">
+            <div class="inputWithIcon">
+                <textarea class="form-control" id="girisYapacakKisiler" placeholder="Giriş Yapacak Kişiler" rows="3"></textarea>
+                <i class="fas fa-users fa-2x iconSize"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="girisTarihi" class="col-sm-2 col-form-label">Giriş Tarihi:</label>
+        <div class="col-sm-6">
+            <div class="inputWithIcon">
+                <input type="text" placeholder="Giriş Tarihi" id="girisTarihi" class="form-control dateShow">
+                <i class="fa fa-calendar-alt fa-2x iconSize" aria-hidden="true"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="cikisTarihi" class="col-sm-2 col-form-label">Çıkış Tarihi:</label>
+        <div class="col-sm-6">
+            <div class="inputWithIcon">
+                <input type="text" placeholder="Çıkış Tarihi" id="cikisTarihi" class="form-control dateShow">
+                <i class="fa fa-calendar-alt fa-2x iconSize" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="girisSaati" class="col-sm-2 col-form-label">Fabrikaya Giriş Çıkış Saatleri:</label>
+        <div class="col-sm-3">
+            <div class="inputWithIcon">
+                <input placeholder="Giriş Saati" id="girisSaati" type='text' class="form-control clockpicker" />
+                <i class="fa fa-clock fa-2x iconSize" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="inputWithIcon">
+                <input placeholder="Çıkış Saati" id="cikisSaati" type='text' class="form-control clockpicker" />
+                <i class="fa fa-clock fa-2x iconSize" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="secilenFirma" class="col-sm-2 col-form-label">Firma:</label>
+        <div class="col-sm-6">
+            <div class="inputWithIcon">
+                <select class="form-control" id="secilenFirma">
+                    <option value="" disabled selected>Firma Seçiniz</option>
+                    {{#each companies}}
+                    <option value="{{companyName}}">{{companyName}}</option>
+                    {{else}}
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="secilenNedenler" class="col-sm-2 col-form-label">Giriş Nedeni:</label>
+
+        <div class="col-sm-6">
+            <div class="inputWithIcon">
+                <select multiple class="form-control" id="secilenNedenler">
+                    {{#each reasons}}
+                    <option value="{{reasonId}}">{{reasonName}}</option>
+                    {{else}}
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="secilenYerler" class="col-sm-2 col-form-label">Giriş Yapılacak Yerler:</label>
+        <div class="col-sm-6">
+            <div class="inputWithIcon">
+                <select multiple class="form-control" id="secilenYerler">
+                    {{#each places}}
+                    <option value="{{placeId}}">{{placeName}}</option>
+                    {{else}}
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="eslikEdecekPersonel" class="col-sm-2 col-form-label">Eşlik Edecek Personel</label>
+
+        <div class="col-sm-6">
+            <div class="inputWithIcon">
+                <input type="text" class="form-control" id="eslikEdecekPersonel" placeholder="Eşlik Edecek Personel">
+                <i class="fas fa-user fa-2x iconSize"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <label for="inlineRadio1" class="col-sm-2 col-form-label">İş Güvenliği Eğitimi Almalı mı?</label>
+
+        <span class="col-sm-1"></span>
+        <div class="form-check form-check-inline col-sm-2">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">Evet</label>
+        </div>
+
+        <div class="form-check form-check-inline col-sm-2">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">Hayır</label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <span class="col-sm-2 "></span>
+        <button type="submit" class="btn btn-outline-secondary col-sm-6" id="loginPermissionForm">Oluştur</button>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function() {
+        $(".dateShow").datepicker({
+            language: "tr",
+            orientation: "auto right"
+        });
+    });
+</script>

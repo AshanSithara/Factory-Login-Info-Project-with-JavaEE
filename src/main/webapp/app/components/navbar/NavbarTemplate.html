@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <a class="navbar-brand" href="#home">Toyota Project</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" id="addCompany" href="#addCompany">Firma Tanımlama</a>
+            <a class="nav-item nav-link" id="addPlace" href="#addPlace">Yer Tanımlama</a>
+            <a class="nav-item nav-link" id="addReason" href="#addReason">Giriş Nedeni Tanımlama</a>
+            <a class="nav-item nav-link" id="loginPermissionApproval" href="#loginPermissionApproval">Giriş İzni Onaylama</a>
+            <a class="nav-item nav-link" id="createLoginPermission" href="#createLoginPermission">Giriş İzni Oluşturma</a>
+            <a class="nav-item nav-link" id="loginPermissionControl" href="#loginPermissionControl">Giriş İzni Kontrol</a>
+            <a class="nav-item nav-link" id="jobSecurityApproval" href="#jobSecurityApproval">İş Güvenliği Onayı</a>
+            <a class="nav-item nav-link" id="report" href="#report">Rapor</a>
+            <a class="nav-item nav-link" id="accountApproval" href="#accountApproval">Hesap Onayı</a>
+
+            <div class="user-area" style="padding-top: 7px; padding-right:0px; padding-left: 2px;">
+                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span style="color: black"><i class="fas fa-user fa-lg" style="color: blue;margin-top: 3px;"></i></span>
+                </a>
+
+                <div class="user-menu dropdown-menu">
+                    <a class="nav-link"><i class="fa fa-user"></i>&nbsp;&nbsp;{{login.name}} <br> <span style="color:#bac1c7;position: inherit">{{login.role}}</span></span></a>
+                    <a class="nav-link" style="color: #bac1c7">&nbsp;&nbsp;</a>
+
+                    <a class="nav-link" ><i class="fa fa-cog"></i>&nbsp;&nbsp;Ayarlar</a>
+
+                    <a class="nav-link" ><i class="fa fa-edit"></i>&nbsp;&nbsp;Profili Düzenle</a>
+
+                    <form method="post" role="form" action="/spring_logout">
+                        <div>
+
+                            <!--https://i.hizliresim.com/PlJ3OQ.png-->
+                            <button class="btn btn-primary" id="userLoginButton" style=" width: 100%;padding: 3px;margin-top: 7px; margin-bottom: 7px;">
+                                <a><i class="fas fa-sign-out-alt fa-lg" style="color: blue;margin-top: 3px;"></i>
+                                </a>
+                                <span>Çıkış Yap</span>
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</nav>
+

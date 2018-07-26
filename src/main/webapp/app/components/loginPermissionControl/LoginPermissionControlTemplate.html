@@ -1,0 +1,19 @@
+
+<h1><span class="col-md-12 mt-5 badge badge-secondary companyCss">Giriş İzni Kontrol</span></h1>
+<hr/>
+
+<div class="form-group row">
+    <label for="secilenFirma2" class="col-sm-1 col-form-label">Firma:</label>
+    <select class="form-control col-sm-4" id="secilenFirma2">
+        <option value="" disabled selected>Firma Seçiniz</option>
+        {{#each companies}}
+        <option value="{{companyName}}">{{companyName}}</option>
+        {{else}}
+        {{/each}}
+    </select>
+    <span class="col-sm-5"></span>
+
+</div>
+<hr/>
+
+<div id="loginPermissionControlTable"></div>

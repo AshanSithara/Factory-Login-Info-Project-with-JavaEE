@@ -1,0 +1,63 @@
+
+<script type="text/javascript">
+    $('.clockpicker').clockpicker({
+        placement: 'top',
+        align: 'left',
+        autoclose: true,
+        'default': 'now'
+    });
+</script>
+
+<table class="table table-striped" id="permissionControlTable" style="visibility: hidden">
+    <thead class="thead-light">
+    <tr>
+        <th class="w-25">Giriş Yapacak Kişiler</th>
+        <th class="w-10" id="tarih0"></th>
+        <th class="w-10" id="tarih1"></th>
+        <th class="w-10" id="tarih2"></th>
+        <th class="w-10" id="tarih3"></th>
+        <th class="w-10" id="tarih4"></th>
+        <th class="w-10" id="tarih5"></th>
+        <th class="w-10" id="tarih6"></th>
+        <th></th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each logincontrols}}
+    <tr {{#isJsOk jobSecOk}} class="table-danger" {{/isJsOk}}>
+
+        <td>
+            <span id="loginControlUser" data-id="{{user.userId}}">{{user.name}}</span>
+            <br/>
+            <span style="font-size: 12px" class="badge badge-secondary">({{entryDate}}) - ({{outDate}})</span>
+        </td>
+
+        {{#each loginControlDates}}
+        {{#control controlDate}}
+        <td>
+            <input type="text"  disabled placeholder='İzin Yok' class="form-control giris{{@index}}"/>
+            <input type="text"  disabled placeholder='İzin Yok' class="form-control cikis{{@index}}" />
+        </td>
+        {{else}}
+        <td data-placement="left" data-align="top" data-autoclose="true">
+            <input type="text" style="text-align: center" required="" {{#control loginHour}} placeholder='Giriş' {{else}} placeholder='{{loginHour}}' data-id="{{loginHour}}" {{/control}} {{#isJsOk ../jobSecOk}} disabled {{/isJsOk}}  class="form-control giris{{@index}} clockpicker"/>
+            <input type="text" style="text-align: center" required="" {{#control outHour}} placeholder='Çıkış' {{else}} placeholder='{{outHour}}' data-id="{{outHour}}" {{/control}} {{#isJsOk ../jobSecOk}} disabled  {{/isJsOk}}  class="form-control cikis{{@index}} clockpicker" />
+        </td>
+        {{/control}}
+        {{/each}}
+
+        <td>
+            <button class="btn btn-primary btn-sm" data-id="{{loginContolId}}" id="permissionControlSaveButton" {{#isJsOk jobSecOk}} disabled {{/isJsOk}}><i class="fas fa-save"></i> &nbsp;Kaydet</button>
+        </td>
+    </tr>
+
+    {{else}}
+    <div class="alert alert-warning" style="margin-top: 15px">
+        <strong>Uyarı!</strong> Giriş İzni Bulunamadı..
+    </div>
+    {{/each}}
+    </tbody>
+
+</table>

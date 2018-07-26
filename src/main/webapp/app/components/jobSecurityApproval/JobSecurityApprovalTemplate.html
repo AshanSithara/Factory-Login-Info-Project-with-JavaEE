@@ -1,0 +1,44 @@
+<h1><span class="col-md-12 mt-5 badge badge-secondary companyCss">İş Güvenliği Eğitimi Onayı Bekleyenler</span></h1>
+<hr/>
+
+<table id="example" class="table table-bordered mt-2 text-center">
+    <thead class="thead-light">
+    <tr>
+        <th class="w-35">İsim</th>
+        <th class="w-12">Giriş Tarihi</th>
+        <th class="w-12">Çıkış Tarihi</th>
+        <th class="w-12">Firma</th>
+        <th class="w-25">Eşlik Edecek Personel</th>
+        <th>Kaydet</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each loginpermissions}}
+    <tr>
+        <td>
+            <span class="normalModeElement">{{#each users}} {{name}} {{else}} {{/each}}</span>
+        </td>
+        <td>
+            <span class="normalModeElement">{{dateOfEntry}}</span>
+        </td>
+        <td>
+            <span class="normalModeElement">{{dateOfOut}}</span>
+        </td>
+        <td>
+            <span class="normalModeElement">{{companyId}}</span>
+        </td>
+        <td>
+            <span class="normalModeElement">{{personelName}}</span>
+        </td>
+        <td>
+            <button class="btn btn-success btn-sm" data-id="{{permissionId}}" id="loginPermissionApprovalButton"><i class="fas fa-check-circle fa-lg"></i> &nbsp;Onayla</button>
+        </td>
+    </tr>
+    {{else}}
+    <div class="alert alert-warning" style="margin-top: 15px">
+        <strong>Uyarı!</strong> İş Güvenliği Onayı Bekleyen Bulunmamakta..
+    </div>
+    {{/each}}
+    </tbody>
+</table>
+

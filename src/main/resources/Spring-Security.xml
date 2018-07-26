@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!-- hasRole gibi expressionları kullanabilmek için use-expressions true yapılıyor -->
+    <!-- Custom provider kullandığımız için auto-config false yapıldı. -->
+    <security:http auto-config="false" use-expressions="true">
+
+        <!-- Kimliklendirmeye göre kullanıcının giremeyeceği url ler belirleniyor -->
+        <security:intercept-url pattern="/api/place/secured*"    access="hasAnyRole('Site Yetkilisi','Yönetici','Personel')"/>
+        <security:intercept-url pattern="/api/user/accountApproval" access="hasAnyRole('Site Yetkilisi','Yönetici')"/>
+        <security:intercept-url pattern="/api/company/secured*" access="hasAnyRole('Site Yetkilisi','Yönetici','Personel')"/>
+        <security:intercept-url pattern="/api/reason/secured*" access="hasAnyRole('Site Yetkilisi','Yönetici','Personel')"/>
+        <security:intercept-url pattern="/api/loginpermission" access="hasAnyRole('Site Yetkilisi','Yönetici','Personel')"/>
+        <security:intercept-url pattern="/api/loginpermission/notJobSecurity*" access="hasAnyRole('Site Yetkilisi','İnsan Kaynakları')"/>
+        <security:intercept-url pattern="/api/loginpermission/notOk*" access="hasAnyRole('Site Yetkilisi','Yönetici')"/>
+        <security:intercept-url pattern="/api/logincontrol/company" access="hasAnyRole('Site Yetkilisi','Güvenlik')"/> <!--Giriş Kontrol-->
+        <security:intercept-url pattern="/api/logincontrol/secured*" access="hasAnyRole('Site Yetkilisi','Yönetici','İnsan Kaynakları')"/> <!--Report-->
+
+        <!-- Login işlemi başarılı ve başarısız olduğunda yönlendirilecek url ler belirleniyor. -->
+        <security:form-login login-processing-url="/j_spring_security_check" login-page="/#"
+                             default-target-url="/#home"
+                             authentication-failure-url="/#?error"
+                             always-use-default-target="true"
+        />
+
+        <!-- Logout işlemi sonrasında gidilecek url belirleniyor -->
+        <security:logout logout-url="/spring_logout" invalidate-session="true" logout-success-url="/"/>
+    </security:http>
+
+
+    <!-- Tanımlanmış olan CustomProvider Spring Security'e entegre ediliyor -->
+    <security:authentication-manager>
+        <security:authentication-provider ref="customAuthenticationProvider"/>
+    </security:authentication-manager>
+
+    <!-- Data Source -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/toyotaproject" />
+        <property name="username" value="root" />
+        <property name="password" value="w4tchDC!iDa" />
+    </bean>
+
+</beans>

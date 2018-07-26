@@ -1,0 +1,47 @@
+<h1><span class="col-md-12 mt-5 badge badge-secondary companyCss">Hesap Onayı Bekleyen Kullanıcılar</span></h1>
+<hr/>
+
+<table class="table table-bordered mt-2 text-center">
+    <thead class="thead-light">
+    <tr>
+        <th class="w-25">İsim</th>
+        <th class="w-25">Kullanıcı Adı</th>
+        <th class="w-15">Hesap Onayı</th>
+        <th class="w-25">Yetki</th>
+        <th>Kaydet</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each users}}
+    <tr>
+        <td>
+            <span class="normalModeElement">{{name}}</span>
+        </td>
+        <td class="userid">
+            <span class="normalModeElement" val="{{userId}}" >{{username}}</span>
+        </td>
+        <td>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input onayTiki" type="checkbox" name="inlineRadioOptions" value="1">
+            </div>
+        </td>
+        <td>
+            <select class="form-control secilenYetki">
+                <option value="" disabled selected>Yetki Seç</option>
+                {{#each ../roles}}
+                <option value="{{roleId}}">{{roleName}}</option>
+                {{else}}
+                {{/each}}
+            </select>
+        </td>
+        <td>
+            <button class="btn btn-primary btn-sm approvalSaveButton" data-id="{{userId}}"><i class="fas fa-check-circle fa-lg"></i> &nbsp;Kaydet</button>
+        </td>
+    </tr>
+    {{else}}
+    <div class="alert alert-warning" style="margin-top: 15px">
+        <strong>Uyarı!</strong> Hesap Onayı Bekleyen Kullanıcı Bulunmamakta..
+    </div>
+    {{/each}}
+    </tbody>
+</table>

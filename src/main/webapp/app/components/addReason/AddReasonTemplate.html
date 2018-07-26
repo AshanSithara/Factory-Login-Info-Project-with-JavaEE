@@ -1,0 +1,45 @@
+
+<h1><span class="col-md-12 mt-5 badge badge-secondary companyCss">Giriş Nedeni Tanımlama</span></h1>
+
+<div class="col-md-12 mt-5 text-center">
+    <form id="reasonForm" class="form-inline mx-auto" style="width: 730px">
+        <div class="input-group">
+            <input type="text" class="form-control" style="width: 600px" id="reasonName" placeholder="Giriş Nedeni">
+            <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit"><i class="fas fa-save fa-lg"></i> &nbsp;Kaydet</button>
+            </span>
+        </div>
+    </form>
+</div>
+
+<hr/>
+
+<table class="table table-bordered mt-2 text-center">
+    <thead class="thead-light">
+    <tr>
+        <th class="w-75">Giriş Nedeni Adı</th>
+        <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each reasons}}
+    <tr>
+        <td>
+            <span class="normalModeElement">{{reasonName}}</span>
+            <input type="text" class="form-control form-control-sm text-center reasonEditInput editModeElement" style="display: none" value="{{cityName}}">
+        </td>
+        <td>
+            <button class="btn btn-success btn-sm editReason normalModeElement" data-id="{{reasonId}}"><i class="fas fa-edit fa-lg"></i> &nbsp;Düzenle</button>
+            <button class="btn btn-primary btn-sm updateReason editModeElement" data-id="{{reasonId}}" style="display: none"><i class="fas fa-save fa-lg"></i> &nbsp;Kaydet</button>
+            <button class="btn btn-danger btn-sm deleteReason normalModeElement" data-id="{{reasonId}}"><i class="fas fa-trash-alt fa-lg"></i> &nbsp;Sil</button>
+            <button class="btn btn-danger btn-sm cancel editModeElement" data-id="{{reasonId}}" style="display: none"><i class="fas fa-times-circle fa-lg"></i> &nbsp;İptal</button>
+        </td>
+    </tr>
+    {{else}}
+    <tr>
+        <td colspan="2">Hiç Giriş Nedeni Tanımlanmamış</td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
+

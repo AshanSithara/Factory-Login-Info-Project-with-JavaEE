@@ -1,0 +1,31 @@
+
+<div class="login login-page">
+    <div class="login form">
+        <form class="login register-form">
+            <input id="name" type="text" placeholder="İsim - Soyisim"/>
+            <input id="username" type="text" placeholder="Kullanıcı Adı"/>
+            <input id="password" type="password" placeholder="Şifre"/>
+            <input id="password2" type="password" placeholder="Şifre Tekrar"/>
+            <button id ="createNewAccount" type="button">Kayıt Ol</button>
+            <p class="login message">Zaten Üye Misin? <a href="#">Giriş Yap</a></p>
+        </form>
+
+        <form method="post" role="form" action="/j_spring_security_check" class="login login-form">
+            <input id = "loginusername" type="text" name="j_username" placeholder="Kullanıcı Adı" required=""
+                   autofocus=""/>
+            <input id = "loginpassword" type="password" name="j_password" placeholder="Şifre" required=""
+                   />
+            <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" data-placement="bottom" id="userLoginButton">
+                    <span class="glyphicon glyphicon-log-in"></span>&nbsp;Giriş Yap
+                </button>
+            </div>
+            <p class="login message">Henüz Üye Olmadın mı? <a>Yeni Hesap Yarat</a></p>
+        </form>
+
+
+    </div>
+    <div id="errorMessage"></div>
+
+</div>
+

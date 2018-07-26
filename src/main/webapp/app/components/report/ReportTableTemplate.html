@@ -1,0 +1,27 @@
+<table class="table table-striped" id="takeReportTable" style="visibility: hidden">
+    <thead class="thead-light">
+    <tr>
+        <th class="w-40">Personel</th>
+        <th class="w-20" id="tarih0">Tarih</th>
+        <th class="w-20" id="tarih1">Giriş Saati</th>
+        <th class="w-20" id="tarih2">Çıkış Saati</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each reports}}
+    <tr>
+        <td>{{personelName}}</td>
+        <td>{{controlDate}}</td>
+        <td>{{#control loginHour}} Giriş Yapılmamış {{else}}{{loginHour}} {{/control}}</td>
+        <td>{{#control loginHour}} Çıkış Yapılmamış{{else}} {{outHour}} {{/control}}</td>
+    </tr>
+
+    {{else}}
+    <div class="alert alert-warning" style="margin-top: 15px">
+        <strong>Uyarı!</strong> Herhangi Bir Kayıt Bulunamadı..
+    </div>
+    {{/each}}
+    </tbody>
+
+</table>
